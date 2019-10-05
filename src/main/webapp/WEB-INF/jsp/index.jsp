@@ -32,10 +32,10 @@
 
     <form id="formPerson">
         <div class="form-group">
-            <label for="id">Позиция</label>
-            <input type="number" class="form-control" id="id" name="id">
-            <label for="firstName">Название</label>
-            <input type="text" class="form-control" id="firstName" pattern="[а-яА-ЯёЁ]+" title="Можно использовать только кириллицу" name="firstName">
+            <label for="position">Позиция</label>
+            <input type="number" class="form-control" id="position" name="position">
+            <label for="name">Название</label>
+            <input type="text" class="form-control" id="name" name="name">
         </div>
         <button type="submit" id="add" class="btn btn-primary">Добавить</button>
         <button type="submit" id="get" class="btn btn-primary">Получить</button>

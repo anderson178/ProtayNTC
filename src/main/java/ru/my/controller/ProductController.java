@@ -28,8 +28,10 @@ public class ProductController {
         return productDAO.getList();
     }
 
-    @RequestMapping(value = "/addPerson", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void add(@RequestBody Product product) {
+        productDAO.add(product);
+        int p=0;
 //        ProductDAO
     }
 }

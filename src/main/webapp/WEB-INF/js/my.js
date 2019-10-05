@@ -7,12 +7,12 @@ $(document).ready(function () {
         switch (button) {
             case "add":
                 console.log(formData);
-                add(outUrl + "/addPerson", formData, button);
+                add(outUrl + "/addProduct", formData, button);
                 break;
             case "get":
                 //alert('hi, my name Denis');
                 fillTable();
-                alert('hi, my name Denis3');
+                //alert('hi, my name Denis3');
                 // getFindById(outUrl + "/getAll", formData);
                 break;
             case "remove":
@@ -27,19 +27,22 @@ $(document).ready(function () {
     });
 
     function add(url, formData, button) {
+        // alert('hi, my name Denis');
         var id = formData.get('id');
-        var person = {
-            id: id,
-            firstName: formData.get('position'),
-            lastName: formData.get(name)
+        var product = {
+            position: formData.get('position'),
+            name: formData.get('name')
         };
+        //alert('dfdfdfdfd');
+        //alert(product);
         $.ajax({
             type: 'POST',
             url: url,
-            data: JSON.stringify(person),
+            data: JSON.stringify(product),
             contentType: "application/json; charset=utf-8",
             processData: false,
             success: function (data) {
+                //alert(data);
                 fillTable();
             },
             error: function (data) {
