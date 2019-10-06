@@ -19,14 +19,35 @@ public class ProductDAO implements DAO {
     }
 
     @Override
-    public void remove(Integer position) {
+    public void remove(int index) {
+        products.remove(index);
+
         //products.g
     }
 
     @Override
-    public void move(Product product) {
+    public void moveUp(int index) {
+        if (index > 0) {
+            Product tempDown = products.get(index - 1);
+            Product temp = products.get(index);
+            products.set(index - 1, temp);
+            products.set(index, tempDown);
+        }
 
     }
+
+    @Override
+    public void moveDown(int index) {
+        if (index < products.size() - 1) {
+            Product tempUp = products.get(index + 1);
+            Product temp = products.get(index);
+            products.set(index + 1, temp);
+            products.set(index, tempUp);
+            int p = 0;
+
+        }
+    }
+
 
     @Override
     public List<Product> getList() {

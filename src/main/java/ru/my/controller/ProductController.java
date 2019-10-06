@@ -1,6 +1,7 @@
 package ru.my.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.my.model.Product;
@@ -31,7 +32,30 @@ public class ProductController {
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void add(@RequestBody Product product) {
         productDAO.add(product);
-        int p=0;
+        int p = 0;
 //        ProductDAO
+    }
+
+
+    //    , consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
+    @RequestMapping(value = "/removeProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void remove(@RequestBody String button) {
+        int index = Integer.parseInt(button.replace("\"", "").split("_")[1]);
+        productDAO.remove(index);
+        int p = 0;
+    }
+
+    @RequestMapping(value = "/moveUpProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void moveUp(@RequestBody String button) {
+        productDAO.moveUp(pars(button));
+    }
+
+    @RequestMapping(value = "/moveDownProduct", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public void moveDown(@RequestBody String button) {
+        productDAO.moveDown(pars(button));
+    }
+
+    private int pars(String button) {
+        return Integer.parseInt(button.replace("\"", "").split("_")[1]);
     }
 }

@@ -1,35 +1,14 @@
 package ru.my.model;
 
+import lombok.*;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 
-public class Product {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Product implements Serializable {
     private int position;
     private String name;
-
-    public Product() {
-
-    }
-    public Product(Integer position, String name) {
-        this.position = position;
-        this.name = name;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
