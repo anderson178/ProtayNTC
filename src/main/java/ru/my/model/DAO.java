@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface DAO {
     void add(Product product);
-    void remove(int index);
-    void moveUp(int index);
-    void moveDown(int index);
+    void remove(Product product);
+    void moveUp(Product product);
+    void moveDown(Product product);
     List<Product> getList();
 }

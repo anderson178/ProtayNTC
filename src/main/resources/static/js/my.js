@@ -29,18 +29,11 @@ $(document).ready(function () {
 
     function add(url, formData, button) {
         // alert('hi, my name Denis');
-        var id = formData.get('id');
+        // var id = formData.get('id');
         var product = {
             position: formData.get('position'),
             name: formData.get('name')
         };
-        //alert('dfdfdfdfd');
-        //alert(product);
-        // alert(JSON.stringify(product));
-        // $.post( url, product).done(function() {
-        //     fillTable();
-        //
-        // } );
         $.ajax({
             type: 'POST',
             url: url,
@@ -72,16 +65,29 @@ $(document).ready(function () {
 
 
                     $("#moveUp_" + i).click(function (event) {
-                        console.log(event.target.id);
-                        moveUp(event.target.id);
+                        var tr = this.parentNode.parentNode;
+                        var position = tr.getElementsByTagName("td")[0].innerHTML;
+                        var name = tr.getElementsByTagName("td")[1].innerHTML;
+                        moveUp(position, name);
+                        alert(code);
+                        //console.log(event.target.id);
+                        //moveUp(event.target.id);
                     });
                     $("#moveDown_" + i).click(function (event) {
-                        moveDown(event.target.id);
-                        console.log(event.target.id);
+                        var tr = this.parentNode.parentNode;
+                        var position = tr.getElementsByTagName("td")[0].innerHTML;
+                        var name = tr.getElementsByTagName("td")[1].innerHTML;
+                        moveDown(position, name);
+                        // moveDown(event.target.id);
+                        // console.log(event.target.id);
                     });
                     $("#remove_" + i).click(function (event) {
-                        console.log(event.target.id);
-                        remove(event.target.id);
+                        var tr = this.parentNode.parentNode;
+                        var position = tr.getElementsByTagName("td")[0].innerHTML;
+                        var name = tr.getElementsByTagName("td")[1].innerHTML;
+                        remove(position, name);
+                        // console.log(event.target.id);
+                        // remove(event.target.id);
                     });
                 }
 
@@ -112,11 +118,15 @@ $(document).ready(function () {
     // $("#moveUp_1").click(function () {
     //     alert('1111111111');
     // });
-    function moveDown(index) {
+    function moveDown(position, name) {
+        var product = {
+            position: position,
+            name: name
+        };
         $.ajax({
             url: outUrl + '/moveDownProduct',
             type: 'POST',
-            data: JSON.stringify(index),
+            data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
             async: true,
             success: function (msg) {
@@ -128,11 +138,15 @@ $(document).ready(function () {
         });
     }
 
-    function moveUp(index) {
+    function moveUp(position, name) {
+        var product = {
+            position: position,
+            name: name
+        };
         $.ajax({
             url: outUrl + '/moveUpProduct',
             type: 'POST',
-            data: JSON.stringify(index),
+            data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
             async: true,
             success: function (msg) {
@@ -144,11 +158,16 @@ $(document).ready(function () {
         });
     }
 
-    function remove(index) {
+    function remove(position, name) {
+        var product = {
+            position: position,
+            name: name
+        };
+
         $.ajax({
             url: outUrl + '/removeProduct',
             type: 'POST',
-            data: JSON.stringify(index),
+            data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
             async: true,
             success: function (msg) {
