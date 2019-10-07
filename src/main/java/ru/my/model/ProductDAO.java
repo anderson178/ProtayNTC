@@ -44,9 +44,9 @@ public class ProductDAO implements DAO {
     }
 
     private void changeProducts(Integer source, Integer destenation) {
-        Product tempSource = products.get(source);
+        Product temp = products.get(source);
         products.set(source, products.get(destenation));
-        products.set(destenation, tempSource);
+        products.set(destenation, temp);
     }
 
     @Override
