@@ -10,7 +10,6 @@ import ru.my.model.Product;
 import java.util.Map;
 
 @Controller
-//@PropertySource(value = "classpath:application.properties", encoding = "ISO-8859-1")
 public class MainController {
     @Value("${nametable}")
     private String nametable;
