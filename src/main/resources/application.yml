@@ -1,3 +1,4 @@
 nametable: Список продуктов
-namefirstcol: Позиция
-namesecondcol: Название
+namefirstcol: Позиция продукты
+namesecondcol: Наименование продукта
+namethirdcol: Пользовательский интерфейс

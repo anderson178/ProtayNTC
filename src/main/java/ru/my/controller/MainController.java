@@ -21,11 +21,15 @@ public class MainController {
     @Value("${namesecondcol}")
     private String nameSecondCol;
 
+    @Value("${namethirdcol}")
+    private String nameThirdCol;
+
     @RequestMapping("/")
     public String getMainPage(Map<String, Object> map) {
-        map.put("1", nametable);
-        map.put("2", nameFirstCol);
-        map.put("3", nameSecondCol);
+        map.put("nameTable", nametable);
+        map.put("nameFirstCol", nameFirstCol);
+        map.put("nameSecondCol", nameSecondCol);
+        map.put("nameThirdCol", nameThirdCol);
         return "index";
     }
 }

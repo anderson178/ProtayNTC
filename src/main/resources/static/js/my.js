@@ -7,7 +7,6 @@ $(document).ready(function () {
             position: formData.get('position'),
             name: formData.get('name')
         };
-        alert(JSON.stringify(product));
         $.ajax({
             type: 'POST',
             url: outUrl + '/addProduct',
@@ -23,30 +22,6 @@ $(document).ready(function () {
         });
         event.preventDefault();
     });
-
-    // function add() {
-    //     var formData = new FormData(document.getElementsByTagName('form')[0]);
-    //     var product = {
-    //         position: formData.get('position'),
-    //         name: formData.get('name')
-    //     };
-    //     alert(JSON.stringify(product));
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: outUrl + '/addProduct',
-    //         data: JSON.stringify(product),
-    //         contentType: "application/json; charset=utf-8",
-    //         processData: false,
-    //         success: function (data) {
-    //             fillTable();
-    //         },
-    //         error: function (data) {
-    //             alert(data);
-    //         }
-    //     });
-    // }
-
-
 
     function fillTable() {
         $.ajax({
@@ -66,25 +41,18 @@ $(document).ready(function () {
                         var position = tr.getElementsByTagName("td")[0].innerHTML;
                         var name = tr.getElementsByTagName("td")[1].innerHTML;
                         moveUp(position, name);
-                        alert(code);
-                        //console.log(event.target.id);
-                        //moveUp(event.target.id);
                     });
                     $("#moveDown_" + i).click(function (event) {
                         var tr = this.parentNode.parentNode;
                         var position = tr.getElementsByTagName("td")[0].innerHTML;
                         var name = tr.getElementsByTagName("td")[1].innerHTML;
                         moveDown(position, name);
-                        // moveDown(event.target.id);
-                        // console.log(event.target.id);
                     });
                     $("#remove_" + i).click(function (event) {
                         var tr = this.parentNode.parentNode;
                         var position = tr.getElementsByTagName("td")[0].innerHTML;
                         var name = tr.getElementsByTagName("td")[1].innerHTML;
                         remove(position, name);
-                        // console.log(event.target.id);
-                        // remove(event.target.id);
                     });
                 }
 
