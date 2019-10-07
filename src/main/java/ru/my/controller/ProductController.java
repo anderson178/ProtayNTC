@@ -10,8 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/")
 public class ProductController {
-
-
     private ProductDAO productDAO = new ProductDAO();
 
     @GetMapping(value = "/getAll")
