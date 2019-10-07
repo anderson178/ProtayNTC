@@ -11,8 +11,8 @@ public class ProductDAO implements DAO {
 
     @Override
     public void add(Product product) {
-        Integer index = indexOf(product);
-        if (index == null) {
+        int index = indexOf(product);
+        if (index == -1) {
             products.add(product);
         } else {
             products.get(index).setName(product.getName());
@@ -24,21 +24,14 @@ public class ProductDAO implements DAO {
         products.remove(product);
     }
 
-    private Integer indexOf(Product product) {
-        Integer index = null;
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getPosition().equals(product.getPosition())) {
-                index = i;
-                break;
-            }
-        }
-        return index;
+    private int indexOf(Product product) {
+        return IntStream.range(0, products.size()).filter(i -> products.get(i).getPosition().equals(product.getPosition())).findFirst().orElse(-1);
     }
 
     @Override
     public void moveUp(Product product) {
-        Integer index = this.indexOf(product);
-        if (index != null && index > 0) {
+        int index = this.indexOf(product);
+        if (index > 0) {
             this.changeProducts(index, index - 1);
         }
     }
