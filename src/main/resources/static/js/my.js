@@ -12,11 +12,11 @@ $(document).ready(function () {
             url: outUrl + '/addProduct',
             data: JSON.stringify(product),
             contentType: "application/json; charset=utf-8",
-            success: function (data) {
+            success: function () {
                 fillTable();
             },
-            error: function (data) {
-                alert(data);
+            error: function () {
+                alert('Недопустимое значение номера позиии, введите число не больше 2147483647');
             }
         });
         event.preventDefault();
@@ -26,7 +26,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: outUrl + '/sortProduct',
-            success: function (data) {
+            success: function () {
                 fillTable();
             },
             error: function (data) {
@@ -43,9 +43,10 @@ $(document).ready(function () {
             success: function (data) {
                 $('#names tbody').empty();
                 for (var i = 0; i < data.length; i++) {
-                    $('#names tbody').append('<tr></td>' + '<td>' + data[i]['position'] + '</td><td>' + data[i]['name'] + '</td><td><button type="submit" id="moveDown_' + i + '"" class="btn btn-primary">Переместить вниз</button>\n' +
-                        '        <button type="submit" id="moveUp_' + i + '" class="btn btn-primary" >Переместить вверх</button>\n' +
-                        '        <button type="submit" id="remove_' + i + '" class="btn btn-primary">Удалить</button></td></tr>');
+                    $('#names tbody').append('<tr></td>' + '<td>' + data[i]['position'] + '</td><td>' + data[i]['name']
+                        + '</td><td><button type="submit" id="moveDown_' + i + '" class="btn btn-primary">Переместить вниз</button>\n'
+                        + '<button type="submit" id="moveUp_' + i + '" class="btn btn-primary" >Переместить вверх</button>\n'
+                        + '<button type="submit" id="remove_' + i + '" class="btn btn-primary">Удалить</button></td></tr>');
                     $("#moveUp_" + i).click(function (event) {
                         var tr = this.parentNode.parentNode;
                         var position = tr.getElementsByTagName("td")[0].innerHTML;
@@ -65,13 +66,11 @@ $(document).ready(function () {
                         remove(position, name);
                     });
                 }
-
             },
             error: function (data) {
                 alert(data);
             }
         });
-
     }
 
     function moveDown(position, name) {
@@ -84,7 +83,7 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            success: function (msg) {
+            success: function () {
                 fillTable();
             },
             error: function (data) {
@@ -103,7 +102,7 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            success: function (msg) {
+            success: function () {
                 fillTable();
             },
             error: function (data) {
@@ -117,13 +116,12 @@ $(document).ready(function () {
             position: position,
             name: name
         };
-
         $.ajax({
             url: outUrl + '/removeProduct',
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            success: function (msg) {
+            success: function () {
                 fillTable();
             },
             error: function (data) {
@@ -131,6 +129,4 @@ $(document).ready(function () {
             }
         });
     }
-
-
 });
