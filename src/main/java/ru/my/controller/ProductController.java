@@ -13,11 +13,11 @@ public class ProductController {
     private ProductDAO productDAO = new ProductDAO();
 
     @GetMapping(value = "/getAll")
-    public List<Product> getStr() {
+    public List<Product> getAll() {
         return productDAO.getList();
     }
 
-    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    @RequestMapping(value = "/addProduct")
     public void add(@RequestBody Product product) {
         productDAO.add(product);
     }
@@ -35,6 +35,11 @@ public class ProductController {
     @PostMapping(value = "/moveDownProduct")
     public void moveDown(@RequestBody Product product) {
         productDAO.moveDown(product);
+    }
+
+    @PostMapping(value = "/sortProduct")
+    public void sortProduct() {
+        productDAO.sort();
     }
 
 

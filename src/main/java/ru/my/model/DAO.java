@@ -13,5 +13,5 @@ public interface DAO {
 
     List<Product> getList();
 
-    List<Product> sort();
+    void sort();
 }

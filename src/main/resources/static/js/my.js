@@ -12,7 +12,20 @@ $(document).ready(function () {
             url: outUrl + '/addProduct',
             data: JSON.stringify(product),
             contentType: "application/json; charset=utf-8",
-            processData: false,
+            success: function (data) {
+                fillTable();
+            },
+            error: function (data) {
+                alert(data);
+            }
+        });
+        event.preventDefault();
+    });
+
+    $("#sort").click(function (event) {
+        $.ajax({
+            type: 'POST',
+            url: outUrl + '/sortProduct',
             success: function (data) {
                 fillTable();
             },
@@ -27,7 +40,6 @@ $(document).ready(function () {
         $.ajax({
             type: 'GET',
             url: outUrl + '/getAll',
-            processData: false,
             success: function (data) {
                 $('#names tbody').empty();
                 for (var i = 0; i < data.length; i++) {
@@ -72,7 +84,6 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            async: true,
             success: function (msg) {
                 fillTable();
             },
@@ -92,7 +103,6 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            async: true,
             success: function (msg) {
                 fillTable();
             },
@@ -113,7 +123,6 @@ $(document).ready(function () {
             type: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json; charset=utf-8',
-            async: true,
             success: function (msg) {
                 fillTable();
             },

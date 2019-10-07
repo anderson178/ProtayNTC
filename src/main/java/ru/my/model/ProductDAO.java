@@ -45,12 +45,8 @@ public class ProductDAO implements DAO {
 
     private void changeProducts(Integer source, Integer destenation) {
         Product tempSource = products.get(source);
-        Product tempDest = products.get(destenation);
-        products.set(source, tempDest);
+        products.set(source, products.get(destenation));
         products.set(destenation, tempSource);
-        int p=0;
-
-
     }
 
     @Override
@@ -68,8 +64,7 @@ public class ProductDAO implements DAO {
     }
 
     @Override
-    public List<Product> sort() {
+    public void sort() {
         Collections.sort(products);
-        return products;
     }
 }
