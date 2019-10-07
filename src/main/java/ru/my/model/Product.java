@@ -10,7 +10,7 @@ import java.util.Comparator;
 @AllArgsConstructor
 @Data
 public class Product implements Serializable, Comparable<Product> {
-    private int position;
+    private Integer position;
     private String name;
 
 //    @Override
