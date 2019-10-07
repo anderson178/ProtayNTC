@@ -25,7 +25,10 @@ public class ProductDAO implements DAO {
     }
 
     private int indexOf(Product product) {
-        return IntStream.range(0, products.size()).filter(i -> products.get(i).getPosition().equals(product.getPosition())).findFirst().orElse(-1);
+        return IntStream.range(0, products.size())
+                .filter(i -> products.get(i).getPosition().equals(product.getPosition()))
+                .findFirst()
+                .orElse(-1);
     }
 
     @Override
@@ -44,8 +47,8 @@ public class ProductDAO implements DAO {
 
     @Override
     public void moveDown(Product product) {
-        Integer index = this.indexOf(product);
-        if (index != null && index < products.size() - 1) {
+        int index = this.indexOf(product);
+        if (index != -1 && index < products.size() - 1) {
             this.changeProducts(index, index + 1);
         }
     }
