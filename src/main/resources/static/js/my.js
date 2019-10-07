@@ -33,9 +33,7 @@ $(document).ready(function () {
                 for (var i = 0; i < data.length; i++) {
                     $('#names tbody').append('<tr></td>' + '<td>' + data[i]['position'] + '</td><td>' + data[i]['name'] + '</td><td><button type="submit" id="moveDown_' + i + '"" class="btn btn-primary">Переместить вниз</button>\n' +
                         '        <button type="submit" id="moveUp_' + i + '" class="btn btn-primary" >Переместить вверх</button>\n' +
-                        '        <button type="submit" id="remove_' + i + '" class="btn btn-primary">Удалить</button></td></tr>')
-
-
+                        '        <button type="submit" id="remove_' + i + '" class="btn btn-primary">Удалить</button></td></tr>');
                     $("#moveUp_" + i).click(function (event) {
                         var tr = this.parentNode.parentNode;
                         var position = tr.getElementsByTagName("td")[0].innerHTML;

@@ -27,7 +27,6 @@ public class ProductDAO implements DAO {
 
     private Integer indexOf(Product product) {
         Integer index = null;
-       // Integer pp = IntStream.range(0, products.size()).filter(i -> products.get(i).getPosition().equals(product.getPosition())).findFirst().getAsInt();
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getPosition().equals(product.getPosition())) {
                 index = i;
@@ -41,22 +40,21 @@ public class ProductDAO implements DAO {
     public void moveUp(Product product) {
         Integer index = this.indexOf(product);
         if (index != null && index > 0) {
-            String tempDown = products.get(index - 1).getName();
-            String temp = products.get(index).getName();
-            products.get(index - 1).setName(temp);
-            products.get(index).setName(tempDown);
+            this.changeProducts(index, index - 1);
         }
+    }
+
+    private void changeProducts(Integer source, Integer destenation) {
+        String temp = products.get(source).getName();
+        products.get(source).setName(products.get(destenation).getName());
+        products.get(destenation).setName(temp);
     }
 
     @Override
     public void moveDown(Product product) {
         Integer index = this.indexOf(product);
         if (index != null && index < products.size() - 1) {
-            String tempUp = products.get(index + 1).getName();
-            String temp = products.get(index).getName();
-            products.get(index + 1).setName(temp);
-            products.get(index).setName(tempUp);
-            int p = 0;
+            this.changeProducts(index, index + 1);
         }
     }
 
