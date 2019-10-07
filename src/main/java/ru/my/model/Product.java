@@ -9,7 +9,7 @@ public class Product implements Comparable<Product> {
     private String name;
 
     @Override
-    public int compareTo(Product o) {
-        return this.getPosition() - o.getPosition();
+    public int compareTo(Product product) {
+        return this.getPosition() - product.getPosition();
     }
 }

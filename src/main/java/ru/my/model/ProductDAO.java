@@ -14,7 +14,6 @@ public class ProductDAO implements DAO {
         Integer index = indexOf(product);
         if (index == null) {
             products.add(product);
-            Collections.sort(products);
         } else {
             products.get(index).setName(product.getName());
         }
@@ -45,9 +44,13 @@ public class ProductDAO implements DAO {
     }
 
     private void changeProducts(Integer source, Integer destenation) {
-        String temp = products.get(source).getName();
-        products.get(source).setName(products.get(destenation).getName());
-        products.get(destenation).setName(temp);
+        Product tempSource = products.get(source);
+        Product tempDest = products.get(destenation);
+        products.set(source, tempDest);
+        products.set(destenation, tempSource);
+        int p=0;
+
+
     }
 
     @Override
@@ -61,6 +64,12 @@ public class ProductDAO implements DAO {
 
     @Override
     public List<Product> getList() {
+        return products;
+    }
+
+    @Override
+    public List<Product> sort() {
+        Collections.sort(products);
         return products;
     }
 }

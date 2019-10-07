@@ -2,3 +2,5 @@ nametable: Список продуктов
 namefirstcol: Позиция продукта
 namesecondcol: Наименование продукта
 namethirdcol: Пользовательский интерфейс
+namebuttonsort: Сортировать по позиции продукта
+namebuttonadd: Добавить продукт

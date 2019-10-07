@@ -23,12 +23,21 @@ public class MainController {
     @Value("${namethirdcol}")
     private String nameThirdCol;
 
+    @Value("${namebuttonadd}")
+    private String nameButtonAdd;
+
+    @Value("${namebuttonsort}")
+    private String nameButtonSort;
+
     @RequestMapping("/")
     public String getMainPage(Map<String, Object> map) {
         map.put("nameTable", nametable);
         map.put("nameFirstCol", nameFirstCol);
         map.put("nameSecondCol", nameSecondCol);
         map.put("nameThirdCol", nameThirdCol);
+        map.put("nameButtonAdd", nameButtonAdd);
+        map.put("nameButtonSort", nameButtonSort);
+
         return "index";
     }
 }
