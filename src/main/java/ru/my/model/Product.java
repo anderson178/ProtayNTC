@@ -1,6 +1,7 @@
 package ru.my.model;
 
 import lombok.*;
+
 /**
  * @author Денис Мироненко
  * @version $Id$
@@ -14,6 +15,7 @@ public class Product implements Comparable<Product> {
 
     /**
      * Метод необходим для сортировки по номеру позиции
+     *
      * @param product - элемент коллекции
      * @return - результат сравнения -1, 1 , 0
      */

@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    /**
+     * адрес узла на котором запускается приложение
+     * @type {string}
+     */
     var outUrl = "http://127.0.0.1:8080";
 
     /**
