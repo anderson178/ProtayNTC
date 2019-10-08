@@ -7,7 +7,7 @@ import java.util.List;
  * @since 08.10.2019
  */
 public interface DAO {
-    void add(Product product);
+    String add(Product product);
 
     void remove(Product product);
 

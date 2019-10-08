@@ -22,8 +22,9 @@ $(document).ready(function () {
             success: function () {
                 fillTable();
             },
-            error: function () {
-                alert('Недопустимое значение номера позиии, введите число не больше 2147483647');
+            error: function (data) {
+                alert(data);
+                // alert('Недопустимое значение номера позиии, введите число не больше 2147483647');
             }
         });
         event.preventDefault();

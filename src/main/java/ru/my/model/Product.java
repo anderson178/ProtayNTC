@@ -8,6 +8,7 @@ import lombok.*;
  * @since 08.10.2019
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class Product implements Comparable<Product> {
     private Integer position;
