@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.my.model.Product;
 
 import java.util.Map;
-
+/**
+ * @author Денис Мироненко
+ * @version $Id$
+ * @since 08.10.2019
+ */
 @Controller
 public class MainController {
     @Value("${nametable}")

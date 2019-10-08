@@ -1,6 +1,9 @@
 $(document).ready(function () {
     var outUrl = "http://127.0.0.1:8080";
 
+    /**
+     * обработка события кнопки add
+     */
     $("#add").click(function (event) {
         var formData = new FormData(document.getElementsByTagName('form')[0]);
         var product = {
@@ -22,6 +25,9 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    /**
+     * обработка события кнопки sort
+     */
     $("#sort").click(function (event) {
         $.ajax({
             type: 'POST',
@@ -36,6 +42,9 @@ $(document).ready(function () {
         event.preventDefault();
     });
 
+    /**
+     * метод заполняет таблицу данными запрошенным из бэкенда добавляя для каждой позиции кнопки перемещения и удаления
+     */
     function fillTable() {
         $.ajax({
             type: 'GET',
@@ -73,6 +82,11 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Метод перемещения позиции вниз
+     * @param position - ячейка с номером позиции
+     * @param name - ячейка с названием позиции
+     */
     function moveDown(position, name) {
         var product = {
             position: position,
@@ -92,6 +106,11 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Метод перемещения позиции вверх
+     * @param position - ячейка с номером позиции
+     * @param name - ячейка с названием позиции
+     */
     function moveUp(position, name) {
         var product = {
             position: position,
@@ -111,6 +130,11 @@ $(document).ready(function () {
         });
     }
 
+    /**
+     * Метод удаления позиции
+     * @param position - ячейка с номером позиции
+     * @param name - ячейка с названием позиции
+     */
     function remove(position, name) {
         var product = {
             position: position,
