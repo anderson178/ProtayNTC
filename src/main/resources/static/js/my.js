@@ -10,23 +10,32 @@ $(document).ready(function () {
      */
     $("#add").click(function (event) {
         var formData = new FormData(document.getElementsByTagName('form')[0]);
-        var product = {
-            position: formData.get('position'),
-            name: formData.get('name')
-        };
-        $.ajax({
-            type: 'POST',
-            url: outUrl + '/addProduct',
-            data: JSON.stringify(product),
-            contentType: "application/json; charset=utf-8",
-            success: function () {
-                fillTable();
-            },
-            error: function (data) {
-                alert(data);
-                // alert('Недопустимое значение номера позиии, введите число не больше 2147483647');
-            }
-        });
+        var pos = formData.get('position');
+        if(pos.match(/^-{0,1}\d+$/)){
+            var product = {
+                position: formData.get('position'),
+                name: formData.get('name')
+            };
+            $.ajax({
+                type: 'POST',
+                url: outUrl + '/addProduct',
+                data: JSON.stringify(product),
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    fillTable();
+                },
+                error: function (data) {
+                    //console.log(data.responseText.toString());
+                    var str = data.responseText;
+                    if (str.includes("out of range of Integer")) {
+                        alert('Недопустимое значение номера позиии, введите число не больше 2147483647')
+                    }
+                }
+            });
+        } else {
+            alert('Номер позиции не является числом');
+        }
+
         event.preventDefault();
     });
 

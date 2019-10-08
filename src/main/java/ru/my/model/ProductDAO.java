@@ -19,26 +19,13 @@ public class ProductDAO implements DAO {
      * @param product - объект Product
      */
     @Override
-    public String add(Product product) {
-        String rst = "";
-        if (product.getPosition() != null) {
-            if (product.getPosition() < Integer.MAX_VALUE) {
-                int index = indexOf(product);
-                if (index == -1) {
-                    products.add(product);
-                } else {
-                    products.get(index).setName(product.getName());
-                    rst = "done";
-                }
-            } else {
-                rst = "big number";
-            }
-
+    public void add(Product product) {
+        int index = indexOf(product);
+        if (index == -1) {
+            products.add(product);
         } else {
-            rst = "contains no number";
+            products.get(index).setName(product.getName());
         }
-
-        return rst;
 
     }
 

@@ -33,8 +33,8 @@ public class ProductController {
      * @param product - входящий объект (Product)
      */
     @RequestMapping(value = "/addProduct")
-    public String add(@RequestBody Product product) {
-       return productDAO.add(product);
+    public void add(@RequestBody Product product) {
+        productDAO.add(product);
     }
 
     /**
