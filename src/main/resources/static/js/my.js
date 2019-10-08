@@ -25,7 +25,6 @@ $(document).ready(function () {
                     fillTable();
                 },
                 error: function (data) {
-                    //console.log(data.responseText.toString());
                     var str = data.responseText;
                     if (str.includes("out of range of Integer")) {
                         alert('Недопустимое значение номера позиии, введите число не больше 2147483647')
@@ -35,7 +34,6 @@ $(document).ready(function () {
         } else {
             alert('Номер позиции не является числом');
         }
-
         event.preventDefault();
     });
 
