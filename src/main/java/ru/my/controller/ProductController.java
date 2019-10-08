@@ -72,6 +72,7 @@ public class ProductController {
      */
     @PostMapping(value = "/sortProduct")
     public void sortProduct() {
+        //TODO может стоит возвращать ответ была ли сортировка?
         productDAO.sort();
     }
 
