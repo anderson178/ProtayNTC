@@ -10,10 +10,10 @@ $(document).ready(function () {
      */
     $("#add").click(function (event) {
         var formData = new FormData(document.getElementsByTagName('form')[0]);
-        var pos = formData.get('position');
-        if(pos.match(/^-{0,1}\d+$/)){
+        var position = formData.get('position');
+        if(position.match(/^-{0,1}\d+$/)){
             var product = {
-                position: formData.get('position'),
+                position: position,
                 name: formData.get('name')
             };
             $.ajax({
