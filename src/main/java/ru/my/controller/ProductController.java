@@ -32,7 +32,7 @@ public class ProductController {
      *
      * @param product - входящий объект (Product)
      */
-    @RequestMapping(value = "/addProduct")
+    @PostMapping(value = "/addProduct")
     public void add(@RequestBody Product product) {
         productDAO.add(product);
     }
@@ -70,9 +70,8 @@ public class ProductController {
     /**
      * Метод сортировки элементов в хранилище
      */
-    @PostMapping(value = "/sortProduct")
+    @GetMapping(value = "/sortProduct")
     public void sortProduct() {
-        //TODO может стоит возвращать ответ была ли сортировка?
         productDAO.sort();
     }
 

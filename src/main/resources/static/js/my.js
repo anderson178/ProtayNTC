@@ -42,7 +42,7 @@ $(document).ready(function () {
      */
     $("#sort").click(function (event) {
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: outUrl + '/sortProduct',
             success: function () {
                 fillTable();
